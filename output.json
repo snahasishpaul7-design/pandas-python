@@ -1,0 +1,66 @@
+[
+    {
+        "product_id": 101,
+        "product": "Laptop",
+        "category": "Electronics",
+        "price": 850.50,
+        "quantity": 5,
+        "rating": 4.5
+    },
+    {
+        "product_id": 102,
+        "product": "Headphones",
+        "category": "Electronics",
+        "price": 45.99,
+        "quantity": 12,
+        "rating": 4.2
+    },
+    {
+        "product_id": 103,
+        "product": "Office Chair",
+        "category": "Furniture",
+        "price": 120.00,
+        "quantity": 7,
+        "rating": 4.0
+    },
+    {
+        "product_id": 104,
+        "product": "Keyboard",
+        "category": "Electronics",
+        "price": 35.75,
+        "quantity": 20,
+        "rating": 4.7
+    },
+    {
+        "product_id": 105,
+        "product": "Desk Lamp",
+        "category": "Furniture",
+        "price": 25.50,
+        "quantity": 15,
+        "rating": 3.9
+    },
+    {
+        "product_id": 106,
+        "product": "Backpack",
+        "category": "Accessories",
+        "price": 55.00,
+        "quantity": 9,
+        "rating": 4.3
+    },
+    {
+        "product_id": 107,
+        "product": "Mouse",
+        "category": "Electronics",
+        "price": 22.99,
+        "quantity": 30,
+        "rating": 4.6
+    },
+    {
+        "product_id": 108,
+        "product": "Notebook",
+        "category": "Stationery",
+        "price": 8.50,
+        "quantity": 50,
+        "rating": 4.1
+    }
+]
