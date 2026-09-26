@@ -20,8 +20,8 @@ def show_info():
     df = read_data()
     data = input("Do you want to see the DataFrame info? (yes/no):-").lower().strip()
     if data == "yes":
-        data1 = df.info()
-        print(data1)
+        df.info()
+        
     elif data == "no":
         print()
 
@@ -115,7 +115,7 @@ def delete_column():
         column = input("Which column missing value you want to delete?:- ")
         if column in df.columns:
             df.dropna(subset=[column], axis=0, inplace=True)
-            print("-Column deleted successfully-")
+            print("Rows with missing values deleted successfully.")
             print(df)
         else:
             print("Column not found")
@@ -123,7 +123,7 @@ def delete_column():
         print("Invalid")
 
 def sort():
-    df = read_csv()
+    df = read_data()
     print("\nAvailable columns:")
     print(list(df.columns))
     number = int(input("\nHow many columns do you want to sort by? "))
