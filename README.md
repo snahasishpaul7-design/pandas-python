@@ -1,95 +1,154 @@
-# Join DataFrames with Pandas
+# Pandas Python Projects
 
-This guide explains how to join several CSV, Excel, or JSON files with pandas. Each file is read into a DataFrame, and the DataFrames are joined one at a time using one or more matching columns.
+Small, practical Python examples for learning pandas step by step.
 
-## Join Code
+This repository brings together examples for reading, exploring, cleaning, changing, joining, grouping, and saving tabular data. The files are beginner-friendly practice projects, so you can open one script at a time and learn by running it.
 
-```python
-result = dfs[0]
+## Contents
 
-for i in range(1, len(dfs)):
-    result = pd.merge(
-        result,
-        dfs[i],
-        on=key_columns,
-        how=how_map[join_choice]
-    )
-```
+- [What you can learn](#what-you-can-learn)
+- [Getting started](#getting-started)
+- [Run a project](#run-a-project)
+- [Sample data](#sample-data)
+- [Project files](#project-files)
+- [Join guide](#join-guide)
 
-## How It Works
+## What You Can Learn
 
-1. `dfs` is a list that holds all the DataFrames.
-2. Python list positions start at `0`, so `dfs[0]` is the first DataFrame.
-3. `result = dfs[0]` starts the result with the first DataFrame.
-4. `range(1, len(dfs))` loops through the remaining DataFrames. It starts at `1` because the first DataFrame is already in `result`.
-5. `pd.merge()` joins the current result with the next DataFrame, `dfs[i]`.
-6. The joined table is saved back into `result`. The next loop uses this updated result.
-7. When the loop ends, `result` contains the final joined table.
+### Read and explore data
 
-## Join Flow
+- Read CSV, Excel, and JSON files with **read_csv.py**, **read_excel.py**, **read_json.py**, and **read_project.py**.
+- View the first or last rows with **head_tail.py**.
+- Check columns, rows, and DataFrame details with **info.py** and **colum_shape.py**.
+- Review summary statistics with **describe.py**.
 
-```mermaid
-flowchart LR
-    A["First DataFrame: dfs[0]"] --> B["Save as result"]
-    B --> C["Join with dfs[1]"]
-    C --> D["Update result"]
-    D --> E["Join with dfs[2]"]
-    E --> F["Final result"]
-```
+### Select, filter, sort, and update
 
-## Join Columns
+- Choose one or more columns with **single_multiple_column.py**.
+- Filter rows with **row_filter.py**.
+- Update values with **update.py**.
+- Add a column with **add_column.py**.
+- Sort rows with **sorting.py**.
 
-`on=key_columns` tells pandas which column or columns to match between the DataFrames.
+### Clean and prepare data
 
-```python
-key_columns = ["student_id"]
-```
+- Find or handle missing values with **data_handle_missing.py**, **fill_handle.py**, and **dropna_handle.py**.
+- Remove rows or columns with **delete.py**.
 
-Every DataFrame must have a column with the same name, such as `student_id`. You can use more than one key column:
+### Combine and group data
 
-```python
-key_columns = ["student_id", "class"]
-```
+- Practice grouping with **group.py** and **multi_group.py**.
+- Combine DataFrames with **concat.py**.
+- Compare pandas join types with **join.py**.
+- Join files interactively with **join_project.py**.
 
-When there is more than one key, pandas matches rows where all key values match.
+### Save data
 
-## Join Types
+- Export data to CSV with **save_csv.py**.
+- Export data to Excel with **save_excel.py**.
 
-`how=how_map[join_choice]` selects the join type. For example, if `join_choice` is `"1"`, `how_map[join_choice]` is `"inner"`.
+### Try the larger projects
 
-| Choice | Join type | What it keeps |
-| --- | --- | --- |
-| `1` | `inner` | Rows with matching keys in both tables |
-| `2` | `left` | Every row from the current result |
-| `3` | `right` | Every row from the next DataFrame |
-| `4` | `outer` | Rows from both tables, including rows without a match |
+- **second_pandas_project.py** brings several common operations together in an interactive menu.
+- **read_project.py** is an example project for reading and saving data in common formats.
 
-## Example
+## Getting Started
 
-First DataFrame:
+You need Python 3 and pandas. Excel examples may also need openpyxl.
 
-| student_id | name |
+1. Download or clone this repository and open a terminal in its folder.
+2. (Optional) Create and activate a virtual environment.
+3. Install the packages:
+
+~~~bash
+python -m pip install pandas openpyxl
+~~~
+
+To create a virtual environment:
+
+~~~bash
+python -m venv .venv
+~~~
+
+Activate it on Windows PowerShell:
+
+~~~powershell
+.venv\Scripts\Activate.ps1
+~~~
+
+Activate it on macOS or Linux:
+
+~~~bash
+source .venv/bin/activate
+~~~
+
+## Run a Project
+
+Run a Python file from the repository folder. For example:
+
+~~~bash
+python second_pandas_project.py
+~~~
+
+Or run the interactive join example:
+
+~~~bash
+python join_project.py
+~~~
+
+Follow the prompts in the terminal. When a script asks for a file path, enter the path to your CSV, Excel, or JSON file. If your data file is in the repository folder, you can usually enter its filename.
+
+Here is a small example of reading the included CSV file:
+
+~~~python
+import pandas as pd
+
+df = pd.read_csv("sales_data_sample.csv")
+print(df.head())
+~~~
+
+## Sample Data
+
+The repository includes sample files you can use while practicing:
+
+- **sales_data_sample.csv** — sample CSV data.
+- **SampleSuperstore.xlsx** — sample Excel workbook.
+- **output.json** — sample JSON data.
+
+Use the filename when you run a script from the repository folder, or enter the full path if the file is somewhere else.
+
+## Project Files
+
+| File | What it demonstrates |
 | --- | --- |
-| 1 | Asha |
-| 2 | Rafi |
+| **add_column.py** | Add a new column using user-provided values |
+| **colum_shape.py** | Inspect DataFrame size and shape |
+| **concat.py** | Concatenate DataFrames |
+| **data_handle_missing.py** | Find missing values |
+| **delete.py** | Remove rows or columns |
+| **describe.py** | Display summary statistics |
+| **dropna_handle.py** | Remove rows with missing values |
+| **fill_handle.py** | Fill missing values |
+| **group.py** | Group rows and summarize data |
+| **head_tail.py** | Display the first or last rows |
+| **info.py** | Inspect DataFrame information |
+| **join.py** | Examples of inner, left, right, outer, and cross joins |
+| **join_project.py** | Interactive joins for CSV, Excel, or JSON files |
+| **linear_poly_time.py** | Practice filling missing values with interpolation methods |
+| **multi_group.py** | Group by more than one column |
+| **read_csv.py**, **read_excel.py**, **read_json.py** | Read common data file formats |
+| **read_project.py** | Practice reading and saving common data formats |
+| **row_filter.py** | Filter rows using conditions |
+| **save_csv.py**, **save_excel.py** | Save DataFrames to files |
+| **second_pandas_project.py** | Use several pandas operations from an interactive menu |
+| **single_multiple_column.py** | Select one or more columns |
+| **sorting.py** | Sort rows by one or more columns |
+| **update.py** | Update DataFrame values |
 
-Second DataFrame:
+## Join Guide
 
-| student_id | mark |
-| --- | --- |
-| 1 | 85 |
-| 2 | 92 |
+The detailed explanation of the join loop, key columns, join types, and examples is in [JOIN_GUIDE.md](JOIN_GUIDE.md).
 
-With `key_columns = ["student_id"]` and an inner join, the result is:
+## Learning Tip
 
-| student_id | name | mark |
-| --- | --- | --- |
-| 1 | Asha | 85 |
-| 2 | Rafi | 92 |
-
-## Important Notes
-
-- `dfs` must contain at least one DataFrame.
-- Every DataFrame must have each key column listed in `key_columns`.
-- When using `on=key_columns`, key column names must be the same in every DataFrame.
-- Check that the key column names and join choice are correct.
+Start with one small script, run it, and change one thing at a time. Try your own file after you understand the sample. This makes it easier to see how each pandas operation changes the DataFrame.
