@@ -304,7 +304,7 @@ def every():
                 column = input("Which column missing value you want to delete?:- ")
                 if column in df.columns:
                     df.dropna(subset=[column], axis=0, inplace=True)
-                    print("Column's missing rows deleted successfully")
+                    print("Rows with missing values deleted successfully.")
                     print(df)
                 else:
                     print("Column not found")
