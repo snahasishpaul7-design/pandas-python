@@ -66,6 +66,21 @@ data = {
 }
 
 df = pd.DataFrame(data)
-df.insert(1,"Bonus_mark",[2,3,2,1,2,1,4,1,2,1,2,2,1,2,1,2,1,2,1,2]) #(index,"column_name",[values])
+column_name = input("Enter new column name: ")
+
+position = int(input("Enter column position: "))
+
+values = []
+
+for i in range(len(df)):
+    value = int(input(f"Enter value {i + 1}: "))
+    values.append(value)
+
+df.insert(position, column_name, values)
 
 print(df)
+
+
+# df.insert(1,"Bonus_mark",[2,3,2,1,2,1,4,1,2,1,2,2,1,2,1,2,1,2,1,2]) #(index,"column_name",[values])
+
+# print(df)
